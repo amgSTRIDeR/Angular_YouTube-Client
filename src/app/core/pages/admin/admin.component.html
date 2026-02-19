@@ -1,0 +1,55 @@
+<form [formGroup]="adminForm" class="auth-wrapper" (ngSubmit)="onSubmit()">
+  <h2 class="auth-header">Create new card</h2>
+  <label>
+    <h3 class="auth_input-header">title</h3>
+    <input [ngClass]="{ 'has-error': title?.errors && title?.dirty, 'validated': !title?.errors && title?.dirty }" name="title" class="auth_input" type="text" formControlName="title" required>
+    <div *ngIf="!title?.value">
+      Please enter a title
+    </div>
+    <div *ngIf="title?.dirty && title?.errors?.['minlength']">
+      The title is too short. Minimum length is 3.
+    </div>
+    <div *ngIf="title?.dirty && title?.errors?.['maxlength']">
+      The title is too long. Maximum length is 20.
+    </div>
+  </label>
+  <label>
+    <h3 class="auth_input-header">description</h3>
+    <input [ngClass]="{ 'has-error': description?.errors && description?.dirty, 'validated': !description?.errors && description?.dirty }" name="description" class="auth_input" type="text" formControlName="description" >
+    <div *ngIf="description?.dirty && description?.errors?.['maxlength']">
+      The description is too long
+    </div>
+  </label>
+  <label>
+    <h3 class="auth_input-header">Link image</h3>
+    <input [ngClass]="{ 'has-error': imageLink?.errors && imageLink?.dirty, 'validated': !imageLink?.errors && imageLink?.dirty }" name="imageLink" class="auth_input" type="text" formControlName="imageLink" required>
+    <div *ngIf="!imageLink?.value">
+      Please enter a link to the image
+    </div>
+    <div *ngIf="imageLink?.errors && imageLink?.value">
+      The image link is invalid
+    </div>
+  </label>
+  <label>
+    <h3 class="auth_input-header">Link video</h3>
+    <input [ngClass]="{ 'has-error': videoLink?.errors && videoLink?.dirty, 'validated': !videoLink?.errors && videoLink?.dirty }" name="videoLink" class="auth_input" type="text" formControlName="videoLink" required>
+    <div *ngIf="!videoLink?.value">
+      Please enter a link to the video
+    </div>
+    <div *ngIf="videoLink?.errors && videoLink?.value">
+      The video link is invalid
+    </div>
+  </label>
+  <label>
+    <h3 class="auth_input-header">Creation date</h3>
+    <input [ngClass]="{ 'has-error': creationDate?.errors && creationDate?.dirty, 'validated': !creationDate?.errors && creationDate?.dirty }" name="creationDate" class="auth_input" type="text" formControlName="creationDate" required>
+    <div *ngIf="!creationDate?.value">
+      Please enter a creation date
+    </div>
+    <div *ngIf="creationDate?.errors && creationDate?.value">
+      The date is invalid
+    </div>
+    <div *ngIf="creationDate?.value">Entered date: {{ createDate(creationDate?.value) }}</div>
+  </label>
+  <button class="auth_login-button" type="submit" [disabled]="!adminForm.valid">Create card</button>
+</form>

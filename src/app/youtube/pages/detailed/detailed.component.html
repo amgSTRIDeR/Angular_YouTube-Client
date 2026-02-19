@@ -1,0 +1,18 @@
+<div class="card" [ngStyle]="{'--bg-color': bgColor}">
+  <img class="card__thumbnail" [src]="videoItem.snippet.thumbnails.high.url" alt="">
+  <div class="card-wrapper">
+    <div class="title-wrapper">
+      <h3 class="card__title">{{ videoItem.snippet.title }}</h3>
+      <p class="card-date">{{ cardDate }}</p>
+    </div>
+    <h4 class="description-title">Description:</h4>
+    <p class="description">{{ videoItem.snippet.description}}</p>
+    <ul class="card__statistics">
+      <li class="statistics__item"><img class="card__thumbnail" src="./assets/img/viewed.png" alt="view count">{{ videoItem.statistics.viewCount }}</li>
+      <li class="statistics__item"><img class="card__thumbnail" src="./assets/img/likes.png" alt="like count">{{ videoItem.statistics.likeCount }}</li>
+      <li class="statistics__item"><img class="card__thumbnail" src="./assets/img/favorites.png" alt="dislike count">{{ videoItem.statistics.favoriteCount }}</li>
+      <li class="statistics__item"><img class="card__thumbnail" src="./assets/img/comments.png" alt="comments count">{{ videoItem.statistics.commentCount }}</li>
+    </ul>
+  </div>
+  <button class="back-button" (click)="returnBack()"></button>
+</div>

@@ -1,0 +1,38 @@
+<form [formGroup]="loginForm" class="auth-wrapper" (ngSubmit)="onSubmit()">
+  <h2 class="auth-header">Login</h2>
+  <label>
+    <h3 class="auth_input-header">login</h3>
+    <input [ngClass]="{ 'has-error': login?.errors && login?.dirty, 'validated': !login?.errors && login?.dirty }" name="login" class="auth_input" type="text" formControlName="login" placeholder="Your login" required>
+    <div *ngIf="login?.dirty && !login?.value">
+      Please enter a login email
+    </div>
+    <div *ngIf="login?.value && login?.errors">
+        The login email is invalid
+    </div>
+  </label>
+  <label>
+    <h3 class="auth_input-header">password</h3>
+    <input [ngClass]="{ 'has-error': password?.errors && password?.dirty, 'validated': !password?.errors && password?.dirty }" class="auth_input" formControlName="password" type="password" placeholder="Your password" required>
+    <div *ngIf="password?.dirty && !password?.value">
+      Please enter a password
+    </div>
+    <div *ngIf="password?.dirty && password?.value">
+      <div *ngIf="password?.errors?.['weakPassword']">
+        Should at least 8 characters 
+      </div>
+      <div *ngIf="password?.errors?.['hasnotUppercase']">
+        Should contains at least one uppercase letter 
+      </div>
+      <div *ngIf="password?.errors?.['hasnotLowercase']">
+        Should contains at least one uppercase letter 
+      </div>
+      <div *ngIf="password?.errors?.['hasnotNumber']">
+        Should contains at least one number 
+      </div>
+      <div *ngIf="password?.errors?.['lackOfSpecialSymbols']">
+        Should contains at least one special symbol ! @ # ? 
+      </div>
+    </div>
+  </label>
+  <button class="auth_login-button" type="submit" [disabled]="!loginForm.valid">Login</button>
+</form>

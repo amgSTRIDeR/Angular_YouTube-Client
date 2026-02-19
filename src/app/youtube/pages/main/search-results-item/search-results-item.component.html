@@ -1,0 +1,12 @@
+<div class="card" [ngStyle]="{'--bg-color': bgColor}">
+  <img class='card__thumbnail' srcset="{{imageMap.toString()}}" sizes="{{imageSize.toString()}}" 
+  [src]="videoItem.snippet.thumbnails.default.url" alt="">
+  <ul class="card__statistics">
+    <li class="statistics__item"><img src="./assets/img/viewed.png" alt="view count">{{ videoItem.statistics.viewCount }}</li>
+    <li class="statistics__item"><img src="./assets/img/likes.png" alt="like count">{{ videoItem.statistics.likeCount }}</li>
+    <li class="statistics__item"><img src="./assets/img/favorites.png" alt="dislike count">{{ videoItem.statistics.favoriteCount }}</li>
+    <li class="statistics__item"><img src="./assets/img/comments.png" alt="comments count">{{ videoItem.statistics.commentCount }}</li>
+  </ul>
+  <h3 class="card__title">{{ videoItem.snippet.title }}</h3>
+  <button class="card__button" (click)="showDetails()">more...</button>
+</div>

@@ -1,0 +1,3 @@
+<main *ngIf="showSearchResults" class="main">
+<app-search-results-item *ngFor="let videoItem of videoItems | sortFilter:filterText | sorting:sortKey" [videoItem]="videoItem"></app-search-results-item>
+</main>

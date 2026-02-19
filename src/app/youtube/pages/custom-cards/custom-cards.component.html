@@ -1,0 +1,9 @@
+<div class="cards-wrapper">
+  <div *ngFor="let customItem of customItems" class="card">
+    <img class='card__thumbnail' src="{{ customItem.imageLink }}" alt="">
+    <h3 class="card__title">{{ customItem.title }}</h3>
+    <p class="card__description">{{ customItem.description }}</p>
+    <p class="card__date">{{ customItem.creationDate }}</p>
+    <video src="{{ customItem.videoLink }}" class="card__video" controls></video>
+  </div>
+</div>

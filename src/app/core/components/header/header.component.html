@@ -1,0 +1,24 @@
+<header *ngIf="isUserLoggedIn" class="header">
+  <div class="search-block">
+    <img class="search-block__logo-image" src="./assets/img/logo.png" alt="" (click)="toMainPage()">
+    <mat-form-field class="search-block__mat-input" appearance="fill">
+      <input [(ngModel)]="searchText" (keyup)="search()" class="search-block__input" matInput type="text" placeholder="What do you want to find out?" />
+    </mat-form-field>
+    <img (click)="showFilteringBlock = !showFilteringBlock" class="search-block__settings-image" src="./assets/img/search_settings.png" alt="">
+  </div>
+  <div class="login-information">
+    <p class="login-information__username">To admin page →</p>
+    <img class="login-information__image" (click)="toAdminPage()" src="./assets/img/login.png" alt="">
+  </div>
+    <button class="card__button" *ngIf="isUserLoggedIn" title="logout" (click)="logout()">logout</button>
+    <button class="card__button" title="customCards" (click)="toCustomCards()">To custom cards</button>
+</header>
+<div *ngIf="showFilteringBlock" class="search-wrapper">
+  <div class="search-wrapper__search-filter">
+    <span class="search-filter__label">Sorting by:</span>
+    <span (click)="changeSortKey('date')" [class.sort-asc]="sortKey === 'dateAsc'" [class.sort-desc]="sortKey === 'dateDesc'" class="search-filter__sort-by-date">date</span>
+    <span (click)="changeSortKey('views')" [class.sort-asc]="sortKey === 'viewsAsc'" [class.sort-desc]="sortKey === 'viewsDesc'"  class="search-filter__sort-by-views">count of views</span>
+    <span [class.filter-active]="filterText" class="search-filter__sort-by-text-label">by word or sentence</span>
+    <input [(ngModel)]="filterText" (input)="setFilter()" class="search-filter__sort-by-text-input" type="text">
+  </div>
+</div>
